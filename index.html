@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Nitin Toolbox</title>
+<style>
+:root{--bg:#f3f5f9;--card:#fff;--text:#172033;--muted:#687386;--accent:#5b5ce2;--line:#e6e9f0}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#171b35,#4145a8);color:white;padding:22px 16px 26px}
+.wrap{max-width:1000px;margin:auto} .brand{font-size:23px;font-weight:800;letter-spacing:.2px}.tag{opacity:.82;font-size:13px;margin-top:3px}
+.search{width:100%;margin-top:18px;padding:14px 15px;border:0;border-radius:13px;font-size:15px;outline:none}
+main{max-width:1000px;margin:auto;padding:18px 14px 40px}
+.welcome{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:4px 0 18px}.welcome h1{font-size:22px;margin:0}.welcome p{margin:4px 0;color:var(--muted);font-size:13px}
+.badge{background:#e9eaff;color:#4445b7;padding:7px 10px;border-radius:20px;font-size:12px;font-weight:700}
+nav{display:flex;gap:8px;overflow:auto;padding:4px 0 14px}
+nav button,.btn{border:0;border-radius:10px;padding:10px 13px;background:#e8eaf5;color:#333b62;font-weight:650;white-space:nowrap;cursor:pointer}
+nav button.active,.btn.primary{background:var(--accent);color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:0 3px 12px #17203308}
+.tool{cursor:pointer;min-height:118px}.icon{font-size:25px}.tool h3{font-size:14px;margin:10px 0 4px}.tool p{font-size:12px;color:var(--muted);margin:0}
+.section-title{font-size:17px;margin:20px 0 11px}
+.panel{display:none}.panel.active{display:block}
+label{display:block;font-size:13px;font-weight:650;margin:12px 0 5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #dce1eb;border-radius:10px;background:white;font:inherit;font-size:14px}
+textarea{min-height:180px;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.small{font-size:12px;color:var(--muted);line-height:1.5}
+.notice{background:#fff7df;border:1px solid #f2df9b;border-radius:12px;padding:12px;font-size:12px;color:#6e5614;margin:14px 0}
+.list{display:grid;gap:8px}.item{padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;display:flex;justify-content:space-between;gap:8px;align-items:center}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(min-width:700px){header{padding:28px 24px}main{padding:24px}.welcome h1{font-size:26px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">🧰 Nitin Toolbox</div><div class="tag">Your personal all-in-one workspace</div>
+  <input class="search" id="search" placeholder="टूल खोजें... जैसे PDF, Age, Declaration" oninput="filterTools()">
+</div></header>
+<main>
+  <div class="welcome"><div><h1>नमस्ते! 👋</h1><p>आपका निजी डिजिटल टूलबॉक्स</p></div><span class="badge">PERSONAL WORKSPACE</span></div>
+  <nav>
+    <button class="active" onclick="showPanel('home',this)">होम</button>
+    <button onclick="showPanel('documents',this)">Document Generator</button>
+    <button onclick="showPanel('profiles',this)">Profiles</button>
+    <button onclick="showPanel('saved',this)">Saved Templates</button>
+  </nav>
+  <section id="home" class="panel active">
+    <h2 class="section-title">आपके टूल</h2>
+    <div class="grid" id="toolGrid">
+      <div class="card tool" data-key="pdf tools"><div class="icon">📄</div><h3>PDF Tools</h3><p>PDF merge, split और compress</p></div>
+      <div class="card tool" data-key="image photo tools"><div class="icon">🖼️</div><h3>Image Tools</h3><p>Image resize और compress</p></div>
+      <div class="card tool" data-key="text tools"><div class="icon">📝</div><h3>Text Tools</h3><p>Word counter और text utilities</p></div>
+      <div class="card tool" data-key="calculator age percentage"><div class="icon">🔢</div><h3>Calculators</h3><p>Age और percentage calculator</p></div>
+      <div class="card tool" data-key="education marks cgpa"><div class="icon">🎓</div><h3>Education Tools</h3><p>Marks और CGPA utilities</p></div>
+      <div class="card tool" data-key="government application document"><div class="icon">🏛️</div><h3>Government Tools</h3><p>आवेदन और दस्तावेज़ सहायता</p></div>
+      <div class="card tool" data-key="ai writing summary"><div class="icon">🤖</div><h3>AI Tools</h3><p>AI सुविधाएँ बाद में जोड़ें</p></div>
+      <div class="card tool" data-key="security password"><div class="icon">🔐</div><h3>Security Tools</h3><p>Password generator आदि</p></div>
+      <div class="card tool" data-key="document self declaration form generator"><div class="icon">📑</div><h3>Self Declaration</h3><p>अपना फॉर्म तैयार करें</p></div>
+      <div class="card tool" data-key="personal files storage"><div class="icon">🗂️</div><h3>Personal Files</h3><p>व्यक्तिगत दस्तावेज़ व्यवस्था</p></div>
+    </div>
+    <div class="notice">यह शुरुआती वर्जन है। अभी फॉर्म टेम्पलेट और प्रोफाइल इसी ब्राउज़र में सेव होते हैं। असली Private Login और Cloud Backup अगला चरण है।</div>
+  </section>
+  <section id="documents" class="panel">
+    <h2 class="section-title">📑 Self Declaration Form Generator</h2>
+    <p class="small">टेम्पलेट चुनें, विवरण भरें और अपना प्रिंट-योग्य ड्राफ्ट तैयार करें। आधिकारिक उपयोग से पहले संबंधित विभाग की शर्तें जाँचें।</p>
+    <label>टेम्पलेट चुनें</label><select id="templateSelect" onchange="loadTemplate()"><option value="basic">सामान्य Self Declaration</option><option value="name">Name Declaration</option><option value="address">Address Declaration</option></select>
+    <div class="row">
+      <div><label>किसकी Profile?</label><select id="profileSelect"></select></div>
+      <div><label>स्थान</label><input id="place" placeholder="जैसे: Nagpur"></div>
+    </div>
+    <div class="row">
+      <div><label>पूरा नाम</label><input id="fullName" placeholder="पूरा नाम"></div>
+      <div><label>पिता/पति का नाम</label><input id="guardian" placeholder="नाम"></div>
+      <div><label>जन्मतिथि</label><input id="dob" type="date"></div>
+    </div>
+    <label>पता</label><textarea id="address" style="min-height:75px" placeholder="पूरा पता"></textarea>
+    <label>घोषणा का विवरण</label><textarea id="statement"></textarea>
+    <label>तारीख</label><input id="formDate" type="date">
+    <div class="actions"><button class="btn primary" onclick="previewForm()">Preview Form</button><button class="btn" onclick="saveTemplate()">इस प्रारूप को सेव करें</button><button class="btn" onclick="window.print()">Print / Save PDF</button></div>
+    <div id="preview" class="card" style="margin-top:16px;display:none"></div>
+  </section>
+  <section id="profiles" class="panel">
+    <h2 class="section-title">👤 Personal & Family Profiles</h2>
+    <div class="card">
+      <div class="row"><div><label>Profile का नाम</label><input id="pLabel" placeholder="जैसे: मेरी Profile / माता"></div><div><label>पूरा नाम</label><input id="pName" placeholder="पूरा नाम"></div></div>
+      <div class="row"><div><label>पिता/पति का नाम</label><input id="pGuardian" placeholder="नाम"></div><div><label>जन्मतिथि</label><input id="pDob" type="date"></div></div>
+      <label>पता</label><textarea id="pAddress" style="min-height:75px"></textarea>
+      <div class="actions"><button class="btn primary" onclick="addProfile()">Profile सेव करें</button></div>
+    </div>
+    <h3 class="section-title">सेव की गई Profiles</h3><div id="profileList" class="list"></div>
+  </section>
+  <section id="saved" class="panel">
+    <h2 class="section-title">📚 Saved Templates</h2><div id="savedList" class="list"></div>
+  </section>
+</main>
+<footer>Nitin Toolbox · Personal workspace prototype</footer>
+<script>
+const $=id=>document.getElementById(id);
+const get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function showPanel(id,btn){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');}
+function filterTools(){let q=$('search').value.toLowerCase();document.querySelectorAll('.tool').forEach(x=>x.style.display=x.dataset.key.includes(q)?'':'none')}
+function renderProfiles(){let ps=get('nt_profiles');$('profileList').innerHTML=ps.length?ps.map((p,i)=>`<div class="item"><span><b>${esc(p.label)}</b><br><small>${esc(p.name)}</small></span><button class="btn" onclick="useProfile(${i})">Use</button></div>`).join(''):'<p class="small">अभी कोई Profile सेव नहीं है।</p>';$('profileSelect').innerHTML='<option value="">खुद विवरण भरें</option>'+ps.map((p,i)=>`<option value="${i}">${esc(p.label)} — ${esc(p.name)}</option>`).join('')}
+function addProfile(){let p={label:$('pLabel').value.trim(),name:$('pName').value.trim(),guardian:$('pGuardian').value.trim(),dob:$('pDob').value,address:$('pAddress').value.trim()};if(!p.label||!p.name){alert('Profile का नाम और पूरा नाम भरें।');return}let ps=get('nt_profiles');ps.push(p);put('nt_profiles',ps);['pLabel','pName','pGuardian','pDob','pAddress'].forEach(x=>$(x).value='');renderProfiles()}
+function useProfile(i){let p=get('nt_profiles')[i];$('fullName').value=p.name;$('guardian').value=p.guardian;$('dob').value=p.dob;$('address').value=p.address;showPanel('documents',document.querySelectorAll('nav button')[1])}
+function loadTemplate(){let v=$('templateSelect').value;let t={basic:'मैं घोषित करता/करती हूँ कि ऊपर दी गई जानकारी मेरी जानकारी और विश्वास के अनुसार सत्य एवं सही है।',name:'मैं घोषित करता/करती हूँ कि मेरा नाम और उससे संबंधित विवरण ऊपर दिए अनुसार सही हैं। आवश्यक प्रमाण-पत्र संलग्न किए जाएँगे।',address:'मैं घोषित करता/करती हूँ कि ऊपर दिया गया पता मेरा वर्तमान/स्थायी पता है और मेरी जानकारी के अनुसार सही है।'};$('statement').value=t[v]}
+function previewForm(){let name=$('fullName').value.trim();if(!name){alert('कृपया पूरा नाम भरें।');return}let date=$('formDate').value||new Date().toISOString().slice(0,10);$('preview').style.display='block';$('preview').innerHTML=`<div style="text-align:center"><h2>SELF DECLARATION</h2></div><p>मैं, <b>${esc(name)}</b>, पिता/पति का नाम <b>${esc($('guardian').value)}</b>, जन्मतिथि <b>${esc($('dob').value)}</b>, निवासी <b>${esc($('address').value)}</b>, निम्नलिखित घोषणा करता/करती हूँ:</p><p>${esc($('statement').value)}</p><br><p>स्थान: ${esc($('place').value)}<br>तारीख: ${esc(date)}</p><br><p>हस्ताक्षर: ____________________</p><p>नाम: ${esc(name)}</p>`}
+function saveTemplate(){let title=prompt('इस प्रारूप का नाम लिखें:');if(!title)return;let ts=get('nt_templates');ts.push({title,statement:$('statement').value,kind:$('templateSelect').value});put('nt_templates',ts);renderSaved()}
+function renderSaved(){let ts=get('nt_templates');$('savedList').innerHTML=ts.length?ts.map((t,i)=>`<div class="item"><span><b>${esc(t.title)}</b><br><small>${esc(t.statement.slice(0,90))}</small></span><button class="btn" onclick="applySaved(${i})">खोलें</button></div>`).join(''):'<p class="small">अभी कोई Template सेव नहीं है।</p>'}
+function applySaved(i){let t=get('nt_templates')[i];$('statement').value=t.statement;showPanel('documents',document.querySelectorAll('nav button')[1])}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('formDate').value=new Date().toISOString().slice(0,10);loadTemplate();renderProfiles();renderSaved();
+</script>
+<style media="print">
+body{background:white}header,nav,.welcome,.notice,.actions,footer,main>section:not(#documents),#documents>h2,#documents>p,#documents>label,#documents>.row,#documents>textarea,#documents>select{display:none!important}
+main{padding:0}.panel{display:none!important}#documents{display:block!important}#preview{display:block!important;border:0;box-shadow:none;margin:0;padding:20mm;font-size:14pt}
+</style>
+</body></html>
